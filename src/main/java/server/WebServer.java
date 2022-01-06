@@ -11,7 +11,7 @@ public class WebServer {
     private String webPath;
     private String serverStatus;
     private String request;
-    public ArrayList<ArrayList<String>> pages = new ArrayList<>();
+    public ArrayList<ArrayList<String>> pages = new ArrayList<>(10);
 
     public WebServer() {
 

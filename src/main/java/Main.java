@@ -80,7 +80,7 @@ public class Main extends JFrame {
 
         webServer = new WebServer(port, webPath, serverStatus);
 
-        ArrayList<String> L = new ArrayList<String>();
+        ArrayList<String> L = new ArrayList<String>(10);
 
         webServer.addL(L);
         webServer.addPageOnL("Page1.html", 0);

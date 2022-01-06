@@ -93,11 +93,11 @@ public class ServerController {
     }
 
     public void reqHandle() {
-        try (ServerSocket sS = this.newServerSocket(webServer.getPort())) {
-            Socket clientS = this.newSocket(sS);
+        try (ServerSocket serverSocket = this.newServerSocket(webServer.getPort())) {
+            Socket clientS = this.newSocket(serverSocket);
             clientHandle(clientS);
             this.closeSocket(clientS);
-            this.closeServerSocket(sS);
+            this.closeServerSocket(serverSocket);
         } catch (IOException e) {
             e.printStackTrace();
             System.err.println("Communication problem");
@@ -110,7 +110,7 @@ public class ServerController {
         String contentType;
         String rawPath;
         Path file;
-        ArrayList<String> inputs = new ArrayList<String>();
+        ArrayList<String> inputs = new ArrayList<String>(10);
 
         try {
             String inputString;

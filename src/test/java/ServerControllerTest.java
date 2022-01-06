@@ -169,7 +169,7 @@ public class ServerControllerTest {
         }
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test(expected = BindException.class)
     public void AcceptNotWorking() throws Exception {
         ServerSocket serverSocket = ServerController.newServerSocket(port);
         Socket socket = ServerController.newSocket(null);
@@ -183,14 +183,13 @@ public class ServerControllerTest {
         serverController.clientHandle(null);
     }
 
-    @Test
+    @Test(expected = BindException.class)
     public void clientHandlerWorking() throws Exception {
         WebServer webServer = new WebServer(port, webFilePath, status.get(0));
         ServerController serverController = new ServerController(webServer);
         ServerSocket serverSocket = ServerController.newServerSocket(port);
         Socket socket = ServerController.newSocket(serverSocket);
         serverController.clientHandle(socket);
-
     }
 }
 
